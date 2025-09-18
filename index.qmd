@@ -653,4 +653,258 @@ print(f"Median balance: ${median_balance:,.2f}")
 print(f"Probability above initial: {prob_above_initial:.3f}")
 ```
 
+## 75% Grade Requirements Analysis 🎯
+
+Now let's complete the 75% grade requirements by analyzing the original investment game.
+
+### Question 1: Expected Value Analysis
+
+Let's calculate the expected value after 1 coin flip for the original game.
+
+**Game Rules:**
+- Initial balance: $1,000
+- Heads (50% chance): Balance increases by 50% → $1,000 × 1.5 = $1,500
+- Tails (50% chance): Balance decreases by 40% → $1,000 × 0.6 = $600
+
+**Expected Value Calculation:**
+```
+E[Balance after 1 flip] = 0.5 × $1,500 + 0.5 × $600
+E[Balance after 1 flip] = $750 + $300 = $1,050
+```
+
+::: {.panel-tabset}
+
+### R Calculation
+
+```{r}
+#| label: expected-value-r
+#| fig-cap: R calculation of expected value after 1 coin flip
+#| echo: true
+
+# Game parameters
+initial_balance <- 1000
+heads_multiplier <- 1.5  # +50%
+tails_multiplier <- 0.6  # -40%
+prob_heads <- 0.5
+
+# Calculate expected value after 1 flip
+balance_heads <- initial_balance * heads_multiplier
+balance_tails <- initial_balance * tails_multiplier
+expected_value <- prob_heads * balance_heads + (1 - prob_heads) * balance_tails
+
+cat("Expected Value Analysis:\n")
+cat("Initial balance: $", initial_balance, "\n")
+cat("Balance if heads (+50%): $", balance_heads, "\n")
+cat("Balance if tails (-40%): $", balance_tails, "\n")
+cat("Expected value after 1 flip: $", expected_value, "\n")
+cat("Expected gain/loss: $", expected_value - initial_balance, "\n")
+```
+
+### Python Calculation
+
+```{python}
+#| label: expected-value-python
+#| fig-cap: Python calculation of expected value after 1 coin flip
+#| echo: true
+
+import numpy as np
+
+# Game parameters
+initial_balance = 1000
+heads_multiplier = 1.5  # +50%
+tails_multiplier = 0.6  # -40%
+prob_heads = 0.5
+
+# Calculate expected value after 1 flip
+balance_heads = initial_balance * heads_multiplier
+balance_tails = initial_balance * tails_multiplier
+expected_value = prob_heads * balance_heads + (1 - prob_heads) * balance_tails
+
+print("Expected Value Analysis:")
+print(f"Initial balance: ${initial_balance:,}")
+print(f"Balance if heads (+50%): ${balance_heads:,}")
+print(f"Balance if tails (-40%): ${balance_tails:,}")
+print(f"Expected value after 1 flip: ${expected_value:,}")
+print(f"Expected gain/loss: ${expected_value - initial_balance:,}")
+```
+
+:::
+
+### Question 2: Expectation vs. Reality Analysis
+
+**Expected Value:** $1,050 (positive, +$50 expected gain)
+
+**Analysis:** The expected value is **positive** (+$50), which means on average, you expect to gain money after one coin flip. However, this is misleading because:
+
+1. **Individual Outcomes:** You either gain $500 (50% chance) or lose $400 (50% chance)
+2. **Risk vs. Reward:** The potential loss is significant relative to the potential gain
+3. **Long-term Implications:** This positive expected value doesn't guarantee long-term success due to the multiplicative nature of the game
+
+### Question 3: Single Simulation Analysis
+
+Let's run one simulation showing the dynamics of your account balance over time from age 25 to 55 (30 years).
+
+::: {.panel-tabset}
+
+### R Single Simulation
+
+```{r}
+#| label: single-simulation-r
+#| fig-cap: R single simulation of account balance over time
+#| echo: true
+
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(ggplot2))
+
+# Set seed for reproducibility
+set.seed(42)
+
+# Parameters
+initial_balance <- 1000
+start_age <- 25
+end_age <- 55
+years <- end_age - start_age
+heads_multiplier <- 1.5
+tails_multiplier <- 0.6
+
+# Simulate single path
+simulate_single_path <- function(initial, years) {
+  balance <- initial
+  path <- numeric(years + 1)
+  path[1] <- initial
+  
+  for (i in 1:years) {
+    coin_flip <- rbinom(1, 1, 0.5)
+    if (coin_flip == 1) {
+      balance <- balance * heads_multiplier  # Heads: +50%
+    } else {
+      balance <- balance * tails_multiplier  # Tails: -40%
+    }
+    path[i + 1] <- balance
+  }
+  
+  return(path)
+}
+
+# Run simulation
+single_path <- simulate_single_path(initial_balance, years)
+
+# Create data frame
+simulation_data <- tibble(
+  age = start_age:end_age,
+  balance = single_path
+)
+
+# Create plot
+ggplot(simulation_data, aes(x = age, y = balance)) +
+  geom_line(color = "darkblue", linewidth = 1.2) +
+  geom_point(color = "red", size = 2) +
+  geom_hline(yintercept = initial_balance, color = "green", linetype = "dashed", linewidth = 1) +
+  labs(
+    title = "Single Simulation: Account Balance Over Time",
+    subtitle = "Original Investment Game (Heads: +50%, Tails: -40%)",
+    x = "Age",
+    y = "Account Balance ($)",
+    caption = "Green line shows initial balance ($1,000)"
+  ) +
+  scale_y_continuous(labels = scales::dollar_format()) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, color = "gray50")
+  )
+
+# Show final results
+cat("Single Simulation Results:\n")
+cat("Initial balance (age 25): $", initial_balance, "\n")
+cat("Final balance (age 55): $", round(single_path[length(single_path)]), "\n")
+cat("Total gain/loss: $", round(single_path[length(single_path)] - initial_balance), "\n")
+cat("Percentage change: ", round((single_path[length(single_path)] / initial_balance - 1) * 100, 1), "%\n")
+```
+
+### Python Single Simulation
+
+```{python}
+#| label: single-simulation-python
+#| fig-cap: Python single simulation of account balance over time
+#| echo: true
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Set seed for reproducibility
+np.random.seed(42)
+
+# Parameters
+initial_balance = 1000
+start_age = 25
+end_age = 55
+years = end_age - start_age
+heads_multiplier = 1.5
+tails_multiplier = 0.6
+
+# Simulate single path
+def simulate_single_path(initial, years):
+    balance = initial
+    path = [initial]
+    
+    for i in range(years):
+        coin_flip = np.random.binomial(1, 0.5)
+        if coin_flip == 1:
+            balance = balance * heads_multiplier  # Heads: +50%
+        else:
+            balance = balance * tails_multiplier  # Tails: -40%
+        path.append(balance)
+    
+    return path
+
+# Run simulation
+single_path = simulate_single_path(initial_balance, years)
+
+# Create data frame
+simulation_data = pd.DataFrame({
+    'age': range(start_age, end_age + 1),
+    'balance': single_path
+})
+
+# Create plot
+fig, ax = plt.subplots(figsize=(12, 8))
+ax.plot(simulation_data['age'], simulation_data['balance'], 
+        color='darkblue', linewidth=2, marker='o', markersize=4)
+ax.axhline(initial_balance, color='green', linestyle='--', linewidth=2, label='Initial Balance')
+ax.set_title('Single Simulation: Account Balance Over Time\nOriginal Investment Game (Heads: +50%, Tails: -40%)', 
+             fontsize=14, fontweight='bold')
+ax.set_xlabel('Age', fontsize=12)
+ax.set_ylabel('Account Balance ($)', fontsize=12)
+ax.grid(True, alpha=0.3)
+ax.legend()
+
+# Format y-axis as currency
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
+
+plt.tight_layout()
+plt.show()
+
+# Show final results
+print("Single Simulation Results:")
+print(f"Initial balance (age 25): ${initial_balance:,}")
+print(f"Final balance (age 55): ${single_path[-1]:,.0f}")
+print(f"Total gain/loss: ${single_path[-1] - initial_balance:,.0f}")
+print(f"Percentage change: {(single_path[-1] / initial_balance - 1) * 100:.1f}%")
+```
+
+:::
+
+### Question 3 Analysis: Are You Happy with the Results?
+
+**Key Observations:**
+
+1. **Volatility:** The account balance shows extreme volatility over time, with dramatic swings up and down
+2. **Multiplicative Effect:** Each coin flip compounds the previous result, leading to exponential growth or decay
+3. **Risk Assessment:** While the expected value is positive, individual simulations can result in significant losses
+4. **Long-term Perspective:** The multiplicative nature means that a few bad streaks can wipe out gains
+
+**Personal Assessment:** This simulation demonstrates why expected value alone is insufficient for decision-making. The high volatility and potential for significant losses make this a risky investment strategy, even though the expected value suggests it should be profitable.
+
 :::
