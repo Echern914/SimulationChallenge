@@ -1,0 +1,123 @@
+---
+title: "Your Document Title"
+author: "Your Name"
+date: today
+format: 
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    code-tools: true
+  pdf:
+    documentclass: article
+    geometry: margin=1in
+    fontsize: 11pt
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Introduction
+
+This is a skeleton Quarto document. You can customize it according to your needs.
+
+## Overview
+
+Brief description of what this document covers.
+
+## Objectives
+
+- Objective 1
+- Objective 2
+- Objective 3
+
+# Methodology
+
+## Data Collection
+
+Describe your data collection process here.
+
+## Analysis Approach
+
+Explain your analytical approach.
+
+# Results
+
+## Summary Statistics
+
+```{python}
+#| label: summary-stats
+#| echo: true
+
+import pandas as pd
+import numpy as np
+
+# Example code block
+data = {'A': [1, 2, 3, 4, 5], 'B': [2, 4, 6, 8, 10]}
+df = pd.DataFrame(data)
+print(df.describe())
+```
+
+## Visualizations
+
+```{python}
+#| label: visualization
+#| echo: true
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Example plot
+plt.figure(figsize=(8, 6))
+plt.plot(df['A'], df['B'], 'o-')
+plt.xlabel('Variable A')
+plt.ylabel('Variable B')
+plt.title('Sample Visualization')
+plt.show()
+```
+
+# Discussion
+
+## Key Findings
+
+Discuss your main findings here.
+
+## Limitations
+
+- Limitation 1
+- Limitation 2
+
+## Future Work
+
+Suggestions for future research or improvements.
+
+# Conclusion
+
+Summarize your main conclusions here.
+
+# References
+
+- Reference 1
+- Reference 2
+- Reference 3
+
+# Appendix
+
+## Additional Code
+
+```{python}
+#| label: appendix-code
+#| echo: false
+
+# Additional analysis code can go here
+```
+
+## Additional Tables
+
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Value 1  | Value 2  | Value 3  |
+| Value 4  | Value 5  | Value 6  |
