@@ -419,12 +419,12 @@ E[Balance after 1 flip] = $750 + $300 = $1,050</code></pre>
 <h2 class="anchored" data-anchor-id="grade-requirements-analysis-1">85% Grade Requirements Analysis 📊</h2>
 <p>Now let’s complete the 85% grade requirements by running multiple simulations to understand the distribution of outcomes.</p>
 <section id="question-4-multiple-simulations-analysis" class="level3">
-<h3 class="anchored">Question 4: Multiple Simulations Analysis</h3>
+<h3 class="anchored" data-anchor-id="question-4-multiple-simulations-analysis">Question 4: Multiple Simulations Analysis</h3>
 <p>Let’s run 100 simulations to model the dynamics of account balance over time and analyze the probability distribution of final balances at age 55.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">R Multiple Simulations</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Python Multiple Simulations</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false" href="">Question 4 Analysis: Are You Happy with the Results?</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false" href="">Question 5: Probability Analysis</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-5" role="tab" aria-controls="tabset-4-5" aria-selected="false" href="">Question 5 Analysis: Detailed Probability Interpretation</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">R Multiple Simulations</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Python Multiple Simulations</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(tidyverse))</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(ggplot2))</span>
@@ -551,7 +551,7 @@ E[Balance after 1 flip] = $750 + $300 = $1,050</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -667,7 +667,11 @@ E[Balance after 1 flip] = $750 + $300 = $1,050</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+</div>
+</div>
+</section>
+<section id="question-4-analysis-are-you-happy-with-the-results" class="level3">
+<h3 class="anchored" data-anchor-id="question-4-analysis-are-you-happy-with-the-results">Question 4 Analysis: Are You Happy with the Results?</h3>
 <p><strong>Key Findings from 100 Simulations:</strong></p>
 <ol type="1">
 <li><strong>Distribution Shape:</strong> The distribution is highly right-skewed with a few extremely high values and many low values</li>
@@ -695,17 +699,18 @@ E[Balance after 1 flip] = $750 + $300 = $1,050</code></pre>
 <li><strong>Misleading Expected Value:</strong> While the mathematical expected value is positive, the practical reality is that most people will lose money</li>
 </ol>
 <p>This analysis reveals the fundamental flaw in relying solely on expected value for decision-making. The multiplicative nature of the investment creates a distribution where the “average” outcome is not representative of what most people will experience.</p>
+</section>
+</section>
 <section id="grade-requirements-analysis-2" class="level2">
 <h2 class="anchored" data-anchor-id="grade-requirements-analysis-2">95% Grade Requirements Analysis 🎯</h2>
 <p>Now let’s complete the 95% grade requirements with detailed probability analysis.</p>
-</section>
-</div>
-<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
+<section id="question-5-probability-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="question-5-probability-analysis">Question 5: Probability Analysis</h3>
 <p>Based on the 100 simulations above, let’s calculate the probability that your account balance will be greater than $1,000 at age 55.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">R Probability Analysis</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Python Probability Analysis</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">R Probability Analysis</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Python Probability Analysis</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(tidyverse))</span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(ggplot2))</span>
@@ -844,7 +849,7 @@ Probability of ending BELOW $10,000 : 0.96 ( 96 %)</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -966,8 +971,9 @@ Probability of ending BELOW $10,000: 0.970 (97.0%)</code></pre>
 </div>
 </div>
 </div>
-</div>
-<div id="tabset-4-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-5-tab">
+</section>
+<section id="question-5-analysis-detailed-probability-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="question-5-analysis-detailed-probability-interpretation">Question 5 Analysis: Detailed Probability Interpretation</h3>
 <p><strong>Primary Answer:</strong> Based on 100 simulations, the probability that your account balance will be greater than $1,000 at age 55 is approximately <strong>0.5-0.6 (50-60%)</strong>.</p>
 <p><strong>Detailed Probability Breakdown:</strong></p>
 <ol type="1">
@@ -1005,9 +1011,6 @@ Probability of ending BELOW $10,000: 0.970 (97.0%)</code></pre>
 <li><strong>Investment Decision:</strong> This probability analysis supports the conclusion that this strategy is unsuitable for most investors</li>
 </ol>
 <p><strong>Conclusion:</strong> The probability analysis confirms our earlier findings - despite a positive expected value, the strategy carries significant risk with only a modest probability of success above the initial investment.</p>
-</div>
-</div>
-</div>
 </section>
 </section>
 </section>

@@ -452,6 +452,7 @@ print(f"Probability of ending above $10,000: {np.mean(final_balances > 10000):.3
 print(f"Probability of ending below $100: {np.mean(final_balances < 100):.3f}")
 ```
 
+:::
 
 ### Question 4 Analysis: Are You Happy with the Results?
 
@@ -713,5 +714,3 @@ print(f"Range: ${np.min(final_balances):,.0f} to ${np.max(final_balances):,.0f}"
 3. **Investment Decision:** This probability analysis supports the conclusion that this strategy is unsuitable for most investors
 
 **Conclusion:** The probability analysis confirms our earlier findings - despite a positive expected value, the strategy carries significant risk with only a modest probability of success above the initial investment.
-
-:::
